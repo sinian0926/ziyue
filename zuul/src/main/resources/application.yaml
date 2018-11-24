@@ -1,0 +1,50 @@
+#server
+server:
+  port: 9997
+
+
+#spring
+spring:
+  application:
+    name: service-zuul
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#      routes:
+#        - id: goods
+#          uri: lb://service-goods
+#          predicates:
+#            - Path=/goods/**
+#          filters:
+#            - StripPrefix=1
+#          # - Weight=provide, 90
+#            - RewritePath=/goods/(?<path>.*), /$\{path}
+#            - name: Hystrix
+#              args:
+#                name: fallbackcmd
+#                fallbackUri: forward:/fallback
+#
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3000
+
+
+
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9999/eureka/
+
+#zuul
+zuul:
+  routes:
+    api-a:
+      path: /goods/**
+      serviceId: service-goods
