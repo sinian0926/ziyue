@@ -1,0 +1,40 @@
+#server
+server:
+  port: 9998
+
+web:
+  upload-path: D:/TempFiles/upload
+#spring
+spring:
+  application:
+    name: service-goods
+
+#thymelea模板配置
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+    #配置回显图片 classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,
+    static-locations: file:${web.upload-path}
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    suffix: .html
+    prefix: classpath:/templates/
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+  mvc:
+    static-path-pattern: /**
+
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9999/eureka/
+
+
+
+
