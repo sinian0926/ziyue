@@ -1,15 +1,28 @@
 #server
 server:
-  port: 9988
+  port: 9989
 
+#图片上传地址
 web:
   upload-path: D:/TempFiles/upload
+
 #spring
 spring:
   application:
-    name: service-goods
-
-#thymelea模板配置
+    name: goods-service
+  cloud:
+      bus:
+        trace:
+          enabled: true
+      config:
+            uri: http://localhost:9998/
+            label: master
+            profile: dev
+            name: config-client
+            discovery:
+              enabled: true
+              serviceId: config-server
+  #thymelea模板配置
   resources:
     chain:
       strategy:
@@ -28,13 +41,21 @@ spring:
     cache: false
   mvc:
     static-path-pattern: /**
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 #eureka
 eureka:
   client:
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:9999/eureka/
 
-
-
-
+#management.security.enabled=false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
