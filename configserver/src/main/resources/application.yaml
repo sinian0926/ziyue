@@ -1,0 +1,28 @@
+server:
+  port: 9998
+spring:
+  application:
+    name: config-server
+  cloud:
+      config:
+        server:
+          git:
+            search-paths: respo
+            uri: https://github.com/sinian0926/ziyue.git
+        label: master
+#eureka:
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9999/eureka/
+#    fetch-registry: false
+#    register-with-eureka: false
+#  instance:
+#    hostname: localhost
+
+#management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
