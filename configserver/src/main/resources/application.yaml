@@ -8,7 +8,7 @@ spring:
         server:
           git:
             search-paths: respo
-            uri: https://github.com/sinian0926/ziyue.git
+            uri: https://github.com/sinian0926/ziyue
         label: master
 #eureka:
 eureka:
