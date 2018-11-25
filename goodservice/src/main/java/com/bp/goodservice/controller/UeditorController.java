@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 //@RequestMapping(value = "/ue")
 public interface UeditorController {
-    @RequestMapping(value="/",method = RequestMethod.GET)
+    @RequestMapping(value="/ue",method = RequestMethod.GET)
     String getUeditor();
 
     @RequestMapping(value="/ue/config")
